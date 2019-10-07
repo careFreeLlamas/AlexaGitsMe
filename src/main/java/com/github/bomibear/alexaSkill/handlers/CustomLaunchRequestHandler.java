@@ -7,14 +7,18 @@ import com.amazon.ask.model.Response;
 
 import java.util.Optional;
 
+import static com.amazon.ask.request.Predicates.requestType;
+
 public class CustomLaunchRequestHandler implements LaunchRequestHandler {
     @Override
     public boolean canHandle(HandlerInput input, LaunchRequest launchRequest) {
-        return false;
+        return input.matches(requestType(LaunchRequest.class));
     }
 
     @Override
     public Optional<Response> handle(HandlerInput input, LaunchRequest launchRequest) {
-        return Optional.empty();
+        return input.getResponseBuilder()
+                .withSpeech("Welcome from within the Custom Launch Request Handler")
+                .build();
     }
 }
