@@ -18,7 +18,7 @@ public class CustomLaunchRequestHandler implements LaunchRequestHandler {
     @Override
     public Optional<Response> handle(HandlerInput input, LaunchRequest launchRequest) {
         return input.getResponseBuilder()
-                .withSpeech("Welcome from within the Custom Launch Request Handler")
+                .withSpeech("Welcome from inside the custom launch handler")
                 .build();
     }
 }
